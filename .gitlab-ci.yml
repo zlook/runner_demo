@@ -9,7 +9,9 @@ test:
   - apt-get update -qy
   - apt-get install -y python-dev python-pip sqlite3
   - pip install django
-  - python manage.py runserver 0.0.0.0:8087
+  - ls -alh
+  - pwd
+  - nohup python manage.py runserver 0.0.0.0:8087 &
   tags:
   - first-tag
 
