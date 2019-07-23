@@ -10,29 +10,8 @@ test:
   - apt-get install -y python-dev python-pip sqlite3
   - pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
   - python manage.py runserver 0.0.0.0:8087
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  tags:
+  - first-tag
 
 
 
