@@ -1,8 +1,40 @@
-image: alpine
-
-before_script:
-   - apt-get update -qq && apt-get install -y sqlite3 python3 python3-dev python3-pip
-   - pip3 install django==2.1.8
-
-job1:
-   - python3 manage.py runserver 0.0.0.0:8080
+stages:
+  - install_deps
+  - build_prod
+  - deploy_prod
+ 
+cache:
+  key: ${CI_BUILD_REF_NAME}
+  paths:
+    - node_modules/
+    - dist
+ 
+# 安装构建依赖
+install_deps_job:
+  stage: install_deps
+  only:
+    - master
+  script:
+    - echo '安装构建依赖阶段'
+  tags:
+    - my-tag
+ 
+# 打包新文件
+build_prod_job:
+  stage: build_prod
+  only:
+    - master
+  script:
+    - echo '打包新文件阶段'
+  tags:
+    - my-tag
+ 
+# 登录项目部署服务器，移除旧版本项目文件，最后将打包好的文件拷贝过去
+deploy_prod_job:
+  stage: deploy_prod
+  only:
+    - master
+  script:
+    - echo '登录项目部署服务器，移除旧版本项目文件，最后将打包好的文件拷贝过去'
+  tags:
+    - my-tag
