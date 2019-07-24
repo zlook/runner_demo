@@ -1,6 +1,8 @@
+image: docker:latest
+
 stages:
   - build
-  - test
+
 job 1:
   stage: build
   script:
@@ -9,6 +11,7 @@ job 1:
     - docker run -p 8087:80 $docker_hash
   tags:
     - first-tag
+  when: manual
 
 
 #before_script:
