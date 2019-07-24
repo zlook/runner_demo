@@ -6,7 +6,7 @@ stages:
 job 1:
   stage: build
   script:
-    - docker_hash=`docker build -t runner_demo .`
+    - docker_hash=`sudo docker build -t runner_demo .`
     - echo $docker_hash
     - docker run -p 8087:80 $docker_hash
   tags:
