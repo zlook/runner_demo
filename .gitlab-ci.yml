@@ -1,20 +1,18 @@
-image: ubuntu
-
 stages:
+  - build
   - test
-
-test:
+job 1:
+  stage: build
+  script:
+    - echo "222222222"
+  tags:
+    - first-tag
+job 2:
   stage: test
   script:
-  - apt-get update -qy
-  - apt-get install -y python-dev python-pip sqlite3
-  - pip install django
-  - ls -alh
-  - pwd
-  - nohup python manage.py runserver 0.0.0.0:8087 &
+    - echo "33333"
   tags:
-  - first-tag
-
+    - first-tag
 
 
 #before_script:
