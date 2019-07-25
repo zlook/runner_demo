@@ -1,20 +1,10 @@
-image: "ruby:2.5"
-
 before_script:
-  - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
-  - ruby -v
-  - which ruby
-  - gem install bundler --no-document
-  - bundle install --jobs $(nproc)  "${FLAGS[@]}"
+ - docker info
 
-rspec:
-  script:
-    - bundle exec rspec
-
-rubocop:
-  script:
-    - bundle exec rubocop
-
+build_image:
+ script:
+   - docker build -t my-docker-image .
+   - docker run my-docker-image /script/to/run/tests
 
 #before_script:
 #  - apt-get update && apt-get install -y python3 git python-pip
