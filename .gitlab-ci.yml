@@ -1,17 +1,19 @@
-image: docker:latest
+image: "ruby:2.5"
 
-stages:
-  - build
+before_script:
+  - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
+  - ruby -v
+  - which ruby
+  - gem install bundler --no-document
+  - bundle install --jobs $(nproc)  "${FLAGS[@]}"
 
-job 1:
-  stage: build
+rspec:
   script:
-    - docker_hash=`sudo docker build -t runner_demo .`
-    - echo $docker_hash
-    - docker run -p 8087:80 $docker_hash
-  tags:
-    - first-tag
-  when: manual
+    - bundle exec rspec
+
+rubocop:
+  script:
+    - bundle exec rubocop
 
 
 #before_script:
