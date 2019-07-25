@@ -1,5 +1,5 @@
 before_script:
-  - docker info
+  - sudo docker info
   - apt-get update && apt-get install -y python3 git python-pip
   - pip3 install django
 
