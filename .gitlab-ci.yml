@@ -8,12 +8,6 @@ stages:
   - build_prod
   - deploy_prod
 
-cache:
-  key: ${CI_BUILD_REF_NAME}
-  paths:
-    - node_modules/
-    - dist
-
 # 安装构建依赖
 install_deps_job:
   stage: install_deps
