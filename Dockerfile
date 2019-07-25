@@ -18,4 +18,4 @@ ADD . /code
 RUN pip install -r requirements.txt
 
 EXPOSE 80
-CMD ["nginx","-g","daemon off;"]
+CMD ["python","manage.py","runserver", "0.0.0.0:80"]
