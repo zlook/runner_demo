@@ -7,6 +7,6 @@ build:
  stage: build
  script:
    - docker build -t runner_demo-image .
-   - docker run runner_demo-image -p 8088:80
+   - docker run -d runner_demo-image -p 8088:80
  tags:
   - second-tag
