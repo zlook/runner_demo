@@ -6,7 +6,7 @@ before_script:
 build:
  stage: build
  script:
-   - docker build -t my-docker-image .
-   - docker run my-docker-image /script/to/run/tests
+   - docker build -t runner_demo-image .
+   - docker run runner_demo-image -p 8088:80
  tags:
   - second-tag
