@@ -8,9 +8,14 @@ RUN apt-get install -y apt-utils
 RUN echo "Asia/Shanghai" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
-RUN apt-get install -y vim nginx wget
+RUN apt-get install -y vim nginx wget python3-dev
 
-RUN pip install django==1.11.7
+RUN mkdir /code
+
+WORKDIR /code
+
+ADD . /code
+RUN pip install -r requirements.txt
 
 EXPOSE 80
 CMD ["nginx","-g","daemon off;"]
