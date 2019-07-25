@@ -8,7 +8,7 @@ RUN apt-get install -y apt-utils
 RUN echo "Asia/Shanghai" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
-RUN apt-get install -y vim nginx wget python3-dev
+RUN apt-get install -y vim nginx wget build-essential python3-dev
 
 RUN mkdir /code
 
